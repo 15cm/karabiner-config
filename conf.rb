@@ -7,9 +7,6 @@ module Conf
       Rule.gen(
         "(internal) fn-caps_lock: caps_lock",
         [{
-            conditions: [
-              Cond.is_internal_keyboard,
-            ],
             from: {
               key_code: "caps_lock",
               modifiers: ModFrom.mandatory_fn,
@@ -20,9 +17,6 @@ module Conf
       Rule.gen(
         '(internal) caps_lock: escape, left_control',
         [{
-          conditions: [
-            Cond.is_internal_keyboard,
-          ],
           from: {
             key_code: 'caps_lock',
             modifiers: ModFrom.optional_not_fn,
@@ -34,9 +28,6 @@ module Conf
       Rule.gen(
         '(internal) left_command: f7, left_gui',
         [{
-          conditions: [
-            Cond.is_internal_keyboard,
-          ],
           from: {
             key_code: 'left_gui',
             modifiers: ModFrom.optional_any

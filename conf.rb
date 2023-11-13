@@ -26,14 +26,14 @@ module Conf
          }]
       ),
       Rule.gen(
-        '(internal) left_command: f7, left_gui',
+        '(internal) left_command: f8, left_gui',
         [{
           from: {
             key_code: 'left_gui',
             modifiers: ModFrom.optional_any
           },
           to: [{ key_code: "left_gui"}],
-          to_if_alone: [{ key_code: "f7"}],
+          to_if_alone: [{ key_code: "f8"}],
          }]
       ),
     ]

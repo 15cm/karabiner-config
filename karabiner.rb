@@ -132,6 +132,9 @@ module ModFrom
   def mandatory_option
     gen_mandatory(["option"])
   end
+  def mandatory_shift
+    gen_mandatory(["shift"])
+  end
 end
 
 module KeyRegion
@@ -324,6 +327,18 @@ class Layer1 < Layer
       )
     end
 
+    def wm_rule_hook()
+      key_map = KeyRegion.number.zip(('1'..'10').map { |x| 'f' + x }).to_h
+      manipulators = key_map.map do |from_key, to_key|
+        m = layer_manipulator(from_key, to_key, mod_from = ModFrom.mandatory_shift)
+        m
+      end
+      @rules << Rule.gen(
+        "#{@layer_description_prefix}: windows manager override",
+        manipulators
+      )
+    end
+
     # Cursor movement
     def movement_rule_hook()
       # from_key_code, [(to_key_code, to_motifiers)...]
@@ -396,6 +411,7 @@ class Layer1 < Layer
     end
 
     input_source_rule_hook()
+    wm_rule_hook()
     movement_rule_hook()
   end
 end
